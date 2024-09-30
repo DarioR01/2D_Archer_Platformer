@@ -34,14 +34,17 @@ export class SpriteFlipbook {
     this.tilesVert = tilesVert;
 
     this.map = new THREE.TextureLoader().load(spriteTexture);
-    this.map.magFilter = THREE.NearestFilter; // sharp pixel sprite
     this.map.repeat.set(1 / tilesHoriz, 1 / tilesVert);
+    this.map.magFilter = THREE.NearestFilter; // sharp pixel sprite
 
     this.update(0);
 
     const material = new THREE.SpriteMaterial({ map: this.map });
 
     this.sprite = new THREE.Sprite(material);
+
+    this.sprite.scale.x = 2;
+    this.sprite.scale.y = 2;
 
     scene.add(this.sprite);
   }
